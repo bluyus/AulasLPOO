@@ -169,3 +169,5 @@ speed-measure-plugin*.json
 !.vscode/extensions.json
 .history/*
 /AulaBancoDeDadosHibernate/build/
+/AulaSincronismo/nbproject/private/
+/AulaSincronismo/build/
