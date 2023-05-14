@@ -15,17 +15,16 @@ public class Concorrencia {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
+       // Criação de recurso compartilhado 
+       Conta contaConjunta = new Conta(1000);      
+       
+       Cliente pai = new Cliente(contaConjunta, "pai"); 
+       Cliente mae = new Cliente(contaConjunta, "mae"); 
+       Cliente filho = new Cliente(contaConjunta, "filho"); 
         
-        Conta contaConjunta = new Conta(1000);       
-
-        Cliente pai = new Cliente("pai", contaConjunta); 
-        Cliente mae = new Cliente("mae", contaConjunta); 
-        Cliente filho = new Cliente("filho", contaConjunta); 
-        
-        pai.start();
-        mae.start();
-        filho.start();
-    }
-    
+       pai.start();
+       mae.start();
+       filho.start();
+    }    
 }

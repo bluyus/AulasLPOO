@@ -10,8 +10,6 @@ package sincronismo;
  * @author Stefano
  */
 public class Conta {
-
-    public Banco banco;
     
     /**
      * @return the saldo
@@ -29,11 +27,30 @@ public class Conta {
     
     private double saldo;
     
+    public Boolean Sacar(double valor) throws InterruptedException
+    {
+     //   Esperar();
+       Thread.sleep(10000);
+ 
+        double saldoAtual = getSaldo();    
+
+        if (valor > saldoAtual)
+        {
+            System.out.println("Saldo insuficiente");
+            return false;
+        }
+
+        double saldoAtualizado = saldoAtual - valor;        
+
+        setSaldo(saldoAtualizado);  
+        
+        System.out.println(Thread.currentThread().getName() + " sacou: R$ 100,00. Saldo apos saque: R$ " + saldoAtualizado);
+        return true;
+    }  
+    
     Conta(double saldoInicial)
     {
-        this.banco = new Banco();
         setSaldo(saldoInicial);
-        System.out.println("Saldo inicial: " + getSaldo());
-    }
-    
+        System.out.println("Saldo inicial: R$ " + getSaldo());
+    } 
 }

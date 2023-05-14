@@ -14,25 +14,21 @@ import java.util.logging.Logger;
  */
 public class Cliente extends Thread {
    
-    private String nome;
     private Conta conta;
     
-    Cliente(String nome, Conta conta)
+    Cliente(Conta conta, String nome)
     {
+        super(nome);
         this.conta = conta;
-        this.nome = nome;
     }
     
+    @Override
     public void run()
     {
-        while (this.conta.banco.Sacar(conta, 100, nome))
-        {
-          //  try {
-          //      Thread.currentThread().sleep(200);
-          //  } catch (InterruptedException ex) {
-          //      Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-          //  }
-        }
-           // System.out.println(nome + ", sacou: 100,00 - saldo atualizado: " + conta.getSaldo());
+        try { 
+            while (conta.Sacar(100)){}
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }  
 }
